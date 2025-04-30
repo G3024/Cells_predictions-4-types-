@@ -69,6 +69,15 @@ model = models.Sequential([
     
     layers.Conv2D(filters=64, kernel_size=(3,3), activation='relu'),
     layers.MaxPooling2D(2,2),
+    layers.Dropout(0.5), 
+    layers.Conv2D(filters=64, kernel_size=(3,3), activation='relu'),
+    layers.MaxPooling2D(2,2),
+
+    layers.Conv2D(filters=64, kernel_size=(3,3), activation='relu'),
+    layers.MaxPooling2D(2,2),
+    
+    layers.Conv2D(filters=64, kernel_size=(3,3), activation='relu'),
+    layers.MaxPooling2D(2,2),
     
     layers.Flatten(),
     layers.Dense(64, activation="relu"),
@@ -78,7 +87,7 @@ model.compile(optimizer="adam",
               loss="sparse_categorical_crossentropy",
               metrics=["accuracy"])
 
-history=model.fit(train_ds, batch_size=10,epochs=2, validation_data=(val_ds))
+history=model.fit(train_ds, batch_size=20,epochs=3, validation_data=(val_ds))
 
 
 
